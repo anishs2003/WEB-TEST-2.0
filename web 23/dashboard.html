@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(!localStorage.getItem("user")){
+  window.location = "login.html";
+}
+</script>
+
+<h2>📊 Trading Signals</h2>
+<div id="signals"></div>
+
+<script>
+let signals = JSON.parse(localStorage.getItem("signals")) || [];
+let box = document.getElementById("signals");
+
+signals.forEach(s => {
+  box.innerHTML += `
+    <div class="card">
+      <h3>${s.name}</h3>
+      <p>Entry: ${s.entry}</p>
+      <p>Target: ${s.target}</p>
+      <p>SL: ${s.sl}</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>

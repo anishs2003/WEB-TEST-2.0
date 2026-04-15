@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>⚡ Admin - Add Signal</h2>
+
+<input id="name" placeholder="Stock Name">
+<input id="entry" placeholder="Entry">
+<input id="target" placeholder="Target">
+<input id="sl" placeholder="Stop Loss">
+
+<button onclick="addSignal()">Add Signal</button>
+
+<script>
+function addSignal(){
+  let signal = {
+    name: document.getElementById("name").value,
+    entry: document.getElementById("entry").value,
+    target: document.getElementById("target").value,
+    sl: document.getElementById("sl").value
+  };
+
+  let signals = JSON.parse(localStorage.getItem("signals")) || [];
+  signals.push(signal);
+  localStorage.setItem("signals", JSON.stringify(signals));
+
+  alert("Signal Added 🚀");
+}
+</script>
+
+</body>
+</html>
